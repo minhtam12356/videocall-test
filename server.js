@@ -11,10 +11,11 @@ const peer = ExpressPeerServer(server , {
 app.use('/peerjs', peer);
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
-app.get('/get-code' , (req,res)=>{
+app.get('/' , (req,res)=>{
+  console.log(uuidv4());
   res.send(uuidv4());
 });
-app.get('/video/:room' , (req,res)=>{
+app.get('/:room' , (req,res)=>{
     res.render('index' , {RoomId:req.params.room});
 });
 io.on("connection" , (socket)=>{
